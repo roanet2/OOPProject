@@ -7,9 +7,9 @@ import java.time.LocalDate;
  */
 public class Lid implements Comparable<Lid>{
 
-    String naam;
-    int rating;
-    LocalDate geboorteDatum;
+    private String naam;
+    private int rating;
+    private LocalDate geboorteDatum;
 
     public Lid(String naam, LocalDate geboorteDatum){
         this.naam = naam;
@@ -30,7 +30,7 @@ public class Lid implements Comparable<Lid>{
     }
 
     @Override
-    public int compareTo(Lid o) {
-        return (naam.compareTo(o.naam));
+    public int compareTo(Lid anderLid) {
+        return (naam.compareTo(anderLid.naam));
     }
 }
