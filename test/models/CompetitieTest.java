@@ -9,22 +9,20 @@ import java.time.LocalDate;
 import static org.junit.Assert.*;
 
 /**
- *
  * @author Roan Ettema & Ronald Vlaar
  */
 
 public class CompetitieTest {
 
 
-    private  static  Competitie instanceCompetitie;
-    private  static  Lid instanceLID1;
-    private  static  Lid instanceLID2;
-    private  static  Lid instanceGeenLid;
-    private  static  Partij  instancePartijMetLid;
-    private  static  Partij  instancePartijGeenLid;
-    private  static  Ronde instanceRonde1;
-    private  static  Ronde instanceRonde2;
-
+    private static Competitie instanceCompetitie;
+    private static Lid instanceLID1;
+    private static Lid instanceLID2;
+    private static Lid instanceGeenLid;
+    private static Partij instancePartijMetLid;
+    private static Partij instancePartijGeenLid;
+    private static Ronde instanceRonde1;
+    private static Ronde instanceRonde2;
 
 
     @Before
@@ -35,7 +33,7 @@ public class CompetitieTest {
 
         //Aanmaken leden die in deze test zullen figureren als ingeschreven leden van de hierboven aangemaakte competitie
         instanceLID1 = new Lid("Roan Ettema", LocalDate.of(1998, 4, 22), 2450);
-        instanceLID2 = new Lid("Ronald Vlaar", LocalDate.of(2000,  12, 22), 2450);
+        instanceLID2 = new Lid("Ronald Vlaar", LocalDate.of(2000, 12, 22), 2450);
 
         //Aanmaken van het lid dat niet ingeschreven en dus niet toegevoegd wordt aan de instanceCompetitie
         instanceGeenLid = new Lid("Levin Ettema", LocalDate.of(2000, 10, 21), 0);
@@ -78,10 +76,10 @@ public class CompetitieTest {
     public void isNogGeenLid() {
         System.out.println("\nTest methode isNogGeenLid():");
         System.out.println("Verwachtingswaarde false, want het lid is ook lid van de competitie");
-        boolean result =  instanceCompetitie.isNogGeenLid(instanceLID1);
+        boolean result = instanceCompetitie.isNogGeenLid(instanceLID1);
         assertFalse(result);
 
-        result =  instanceCompetitie.isNogGeenLid(instanceLID2);
+        result = instanceCompetitie.isNogGeenLid(instanceLID2);
         assertFalse(result);
 
         System.out.println("Verwachtingswaarde true, immmers is het lid geen lid van de competitie en " +
@@ -105,8 +103,6 @@ public class CompetitieTest {
         boolean expResultFalse = false;
         result = instanceCompetitie.isGeenRondeMetSpelersZonderInschrijving(instanceRonde2);
         assertEquals(expResultFalse, result);
-
-
 
 
     }
