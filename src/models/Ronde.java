@@ -11,7 +11,7 @@ public class Ronde {
     private LocalDate speelDatum;
     private ArrayList<Partij> partijen;
     private boolean isToegevoegdAanCompetitie;
-    private ArrayList<Lid> ledenIncompetitie;
+    private ArrayList<Lid> ledenInCompetitie;
 
 
     public Ronde(LocalDate speelDatum) {
@@ -22,7 +22,7 @@ public class Ronde {
 
     public void setOpToegevoegdAanCompetitie(ArrayList<Lid> ledenIncompetitie) {
 
-        this.ledenIncompetitie = ledenIncompetitie;
+        this.ledenInCompetitie = ledenIncompetitie;
         isToegevoegdAanCompetitie = true;
     }
 
@@ -44,7 +44,7 @@ public class Ronde {
         if (isToegevoegdAanCompetitie) {
 
             Competitie temp = new Competitie("Middleman", LocalDate.now(), LocalDate.now());
-            for (Lid lid : ledenIncompetitie) {
+            for (Lid lid : ledenInCompetitie) {
                 temp.voegLidToe(lid);
             }
 
@@ -62,13 +62,14 @@ public class Ronde {
                         "volgende leden geen lid van zijn: ");
                 melding.append(partij.getSpelerZwart().getNaam());
 
-            } else if(temp.isNogGeenLid(partij.getSpelerZwart())){
+            } else if (temp.isNogGeenLid(partij.getSpelerZwart())) {
                 melding.append("De ronde waaraan u een partij probeert toe te voegen komt al voor in een competitie\nwaar de " +
                         "volgende leden geen lid van zijn: ");
                 melding.append(partij.getSpelerWit().getNaam());
 
-            }else{
+            } else {
                 melding.append("Partij met succes toegevoegd aan ronde!");
+                partijen.add(partij);
             }
 
             System.out.println(melding);
