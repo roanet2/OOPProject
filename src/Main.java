@@ -23,9 +23,6 @@ public class Main extends Application {
 
 
 // TODO
-// Zorgen dat de rating (her)berekent wordt naargelang de uitslag van het spel, en de rating van de
-// spelers voordat het potje begon. //
-// TODO
 // maken van de toString()'s indien relevant voor de java FX applicatie. //
 
 
