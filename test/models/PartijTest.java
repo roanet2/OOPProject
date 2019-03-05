@@ -10,14 +10,15 @@ import static org.junit.Assert.*;
 
 /**
  * In deze test wordt gecontroleerd of het updaten van de rating correct werkt.
+ *
  * @author Ronald Vlaar
  */
 public class PartijTest {
 
-    private static final int ratingLidZonderBekendeRating = 1200;
-    private static final int kFactorLidZonderBekendeRating = 20;
-    private static final int ratingLidMetBekendeRating = 1500;
-    private static final int kFactorLidMetBekendeRating = 40;
+    private static final int RATING_LID_ZONDER_BEKENDE_RATING = 1200;
+    private static final int K_FACTOR_LID_ZONDER_BEKENDE_RATING = 20;
+    private static final int RATING_LID_MET_BEKENDE_RATING = 1500;
+    private static final int K_FACTOR_LID_MET_BEKENDE_RATING = 40;
 
     private static Lid instanceLidZonderBekendeRating;
     private static Lid instanceLidMetBekendeRating;
@@ -49,8 +50,8 @@ public class PartijTest {
     @Test
     //Kloppen de ratings na aanmaak van de partij?
     public void getRating() {
-        assertEquals(ratingLidMetBekendeRating, instanceLidMetBekendeRating.getRating());
-        assertEquals(ratingLidZonderBekendeRating, instanceLidZonderBekendeRating.getRating());
+        assertEquals(RATING_LID_MET_BEKENDE_RATING, instanceLidMetBekendeRating.getRating());
+        assertEquals(RATING_LID_ZONDER_BEKENDE_RATING, instanceLidZonderBekendeRating.getRating());
     }
 
     @Test
@@ -59,10 +60,10 @@ public class PartijTest {
 
         instancePartij.berekenKansOpWinst(instanceLidMetBekendeRating, instanceLidZonderBekendeRating);
 
-        double kansOpWinstSpelerMetBekendeRating = 1.0 / (1.0 + Math.pow(10, ((ratingLidZonderBekendeRating -
-                ratingLidMetBekendeRating) / 400.0)));
-        double kansOpWinstSpelerZonderBekendeRating = 1.0 / (1.0 + Math.pow(10, ((ratingLidMetBekendeRating
-                - ratingLidZonderBekendeRating) / 400.0)));
+        double kansOpWinstSpelerMetBekendeRating = 1.0 / (1.0 + Math.pow(10, ((RATING_LID_ZONDER_BEKENDE_RATING -
+                RATING_LID_MET_BEKENDE_RATING) / 400.0)));
+        double kansOpWinstSpelerZonderBekendeRating = 1.0 / (1.0 + Math.pow(10, ((RATING_LID_MET_BEKENDE_RATING
+                - RATING_LID_ZONDER_BEKENDE_RATING) / 400.0)));
 
         assertEquals(kansOpWinstSpelerZonderBekendeRating, instancePartij.getWinstVerwachtingSpelerWit(), 0);
         assertEquals(kansOpWinstSpelerMetBekendeRating, instancePartij.getWinstVerwachtingSpelerZwart(), 0);
@@ -76,12 +77,12 @@ public class PartijTest {
 
         instancePartij.setWinnaar(instanceLidMetBekendeRating);
 
-        int nieuweRatingLidMetBekendeRating = (int) (ratingLidMetBekendeRating +
+        int nieuweRatingLidMetBekendeRating = (int) (RATING_LID_MET_BEKENDE_RATING +
                 (1 - instancePartij.getWinstVerwachtingSpelerZwart())
-                        * kFactorLidMetBekendeRating);
-        int nieuweRatingLidZonderBekendeRating = (int) (ratingLidZonderBekendeRating +
+                        * K_FACTOR_LID_MET_BEKENDE_RATING);
+        int nieuweRatingLidZonderBekendeRating = (int) (RATING_LID_ZONDER_BEKENDE_RATING +
                 (0 - instancePartij.getWinstVerwachtingSpelerWit())
-                        * kFactorLidZonderBekendeRating);
+                        * K_FACTOR_LID_ZONDER_BEKENDE_RATING);
 
         assertEquals(nieuweRatingLidMetBekendeRating, instancePartij.getSpelerZwart().getRating());
         assertEquals(nieuweRatingLidZonderBekendeRating, instancePartij.getSpelerWit().getRating());
