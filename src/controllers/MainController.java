@@ -15,9 +15,11 @@ public class MainController {
     private MenuItem bewaarMenuItem;
     private MenuItem afsluitenMenuItem;
     private MenuItem maakCompetitieMenuItem;
-    private MenuItem maakWedstrijdMenuItem;
-    private MenuItem maakTeamMenuItem;
-    private MenuItem gebruikTeamMenuItem;
+    private MenuItem voegRondeToeMenuItem;
+    private MenuItem maakRondeMenuItem;
+    private MenuItem voegPartijToeMenuItem;
+    private MenuItem maakPartijMenuItem;
+    private MenuItem maakLidMenuItem;
     private MenuItem toonWedstrijdenMenuItem;
     private MenuItem toonCompetitieStandMenuItem;
     private MenuItem overMenuItem;
@@ -46,6 +48,7 @@ public class MainController {
             melding.setText("Over aangeroepen.");
 
             aboutView.show();
+
         });
     }
 
@@ -65,16 +68,25 @@ public class MainController {
         this.maakCompetitieMenuItem = maakCompetitieMenuItem;
     }
 
-    public void setMaakWedstrijdMenuItem(MenuItem maakWedstrijdMenuItem) {
-        this.maakWedstrijdMenuItem = maakWedstrijdMenuItem;
+
+    public void setVoegRondeToeMenuItem(MenuItem voegRondeToeMenuItem) {
+        this.voegRondeToeMenuItem = voegRondeToeMenuItem;
     }
 
-    public void setMaakTeamMenuItem(MenuItem maakTeamMenuItem) {
-        this.maakTeamMenuItem = maakTeamMenuItem;
+    public void setMaakRondeMenuItem(MenuItem maakRondeMenuItem) {
+        this.maakRondeMenuItem = maakRondeMenuItem;
     }
 
-    public void setGebruikTeamMenuItem(MenuItem gebruikTeamMenuItem) {
-        this.gebruikTeamMenuItem = gebruikTeamMenuItem;
+    public void setVoegPartijToeMenuItem(MenuItem voegPartijToeMenuItem){
+        this.voegPartijToeMenuItem = voegPartijToeMenuItem;
+    }
+
+    public void setMaakPartijMenuItem(MenuItem maakPartijMenuItem){
+        this.maakPartijMenuItem = maakPartijMenuItem;
+    }
+
+    public void setMaakLidMenuItem(MenuItem maakLidMenuItem){
+        this.maakLidMenuItem = maakLidMenuItem;
     }
 
     public void setToonWedstrijdenMenuItem(MenuItem toonWedstrijdenMenuItem) {

@@ -15,7 +15,9 @@ public class AboutController {
      * Wanneer deze methode wordt aangeroepen, is het veilig om bijv. "melding" aan te passen.
      */
     public void initialize() {
-        melding.setText("Deze applicatie is gemaakt door <studentnaam>, <studentnummer>, <klas>!");
+        melding.setText("Deze applicatie is gemaakt door <Ronald Vlaar>, <500805383> & <Roan Ettema>, " +
+                "<studentennummer> <iS108>!");
+
     }
 
     public void setMelding(TextArea melding) {

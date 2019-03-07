@@ -29,9 +29,11 @@ public class MainView {
     private MenuItem bewaarMenuItem;
     private MenuItem afsluitenMenuItem;
     private MenuItem maakCompetitieMenuItem;
-    private MenuItem maakWedstrijdMenuItem;
-    private MenuItem maakTeamMenuItem;
-    private MenuItem gebruikTeamMenuItem;
+    private MenuItem voegRondeToeMenuItem;
+    private MenuItem maakRondeMenuItem;
+    private MenuItem voegPartijToeMenuItem;
+    private MenuItem maakPartijMenuItem;
+    private MenuItem maakLidMenuItem;
     private MenuItem toonWedstrijdenMenuItem;
     private MenuItem toonCompetitieStandMenuItem;
     private MenuItem overMenuItem;
@@ -86,21 +88,32 @@ public class MainView {
         Menu competitieMenu = new Menu("Competitie");
 
         maakCompetitieMenuItem = new MenuItem("Maak competitie");
-        maakTeamMenuItem = new MenuItem("Maak partij");
-        gebruikTeamMenuItem = new MenuItem("Voeg partij toe aan competitie");
+        voegRondeToeMenuItem = new MenuItem("Voeg ronde toe");
+
 
         competitieMenu.getItems().addAll(
                 maakCompetitieMenuItem,
-                maakTeamMenuItem,
-                gebruikTeamMenuItem
+                voegRondeToeMenuItem
         );
 
         //Wedstrijd-menu
-        Menu wedstrijdMenu = new Menu("Wedstrijd");
+        Menu rondeMenu = new Menu("Ronde");
 
-        maakWedstrijdMenuItem = new MenuItem("Maak wedstrijduitslag");
+        maakRondeMenuItem = new MenuItem("Maak ronde");
+        voegPartijToeMenuItem = new MenuItem("Voeg partij toe");
 
-        wedstrijdMenu.getItems().add(maakWedstrijdMenuItem);
+        rondeMenu.getItems().addAll(maakRondeMenuItem, voegPartijToeMenuItem);
+
+        //Partij-menu
+        Menu partijMenu = new Menu("Partij");
+        maakPartijMenuItem = new MenuItem("Maak Partij");
+        partijMenu.getItems().add(maakPartijMenuItem);
+
+        //Lid-menu
+        Menu lidMenu = new Menu("Lid");
+        maakLidMenuItem = new MenuItem("Maak Lid");
+        lidMenu.getItems().add(maakLidMenuItem);
+
 
         //Statistiek-menu
         Menu statistiekMenu = new Menu("Statistiek");
@@ -124,7 +137,9 @@ public class MainView {
         return new MenuBar(
                 spelMenu,
                 competitieMenu,
-                wedstrijdMenu,
+                rondeMenu,
+                partijMenu,
+                lidMenu,
                 statistiekMenu,
                 helpMenu
         );
@@ -147,9 +162,11 @@ public class MainView {
         controller.setBewaarMenuItem(bewaarMenuItem);
         controller.setAfsluitenMenuItem(afsluitenMenuItem);
         controller.setMaakCompetitieMenuItem(maakCompetitieMenuItem);
-        controller.setMaakWedstrijdMenuItem(maakWedstrijdMenuItem);
-        controller.setMaakTeamMenuItem(maakTeamMenuItem);
-        controller.setGebruikTeamMenuItem(gebruikTeamMenuItem);
+        controller.setVoegRondeToeMenuItem(voegRondeToeMenuItem);
+        controller.setMaakRondeMenuItem(maakRondeMenuItem);
+        controller.setVoegPartijToeMenuItem(voegPartijToeMenuItem);
+        controller.setMaakPartijMenuItem(maakPartijMenuItem);
+        controller.setMaakLidMenuItem(maakLidMenuItem);
         controller.setToonWedstrijdenMenuItem(toonWedstrijdenMenuItem);
         controller.setToonCompetitieStandMenuItem(toonCompetitieStandMenuItem);
         controller.setOverMenuItem(overMenuItem);
