@@ -18,7 +18,7 @@ import javafx.stage.Stage;
  */
 public class MainView {
 
-    private static final String TITEL = "Competitie";
+    private static final String TITEL = "SchaakCompetitie";
     private static final int WIDTH = 550;
     private static final int HEIGHT = 320;
 
@@ -171,7 +171,8 @@ public class MainView {
         controller.setToonCompetitieStandMenuItem(toonCompetitieStandMenuItem);
         controller.setOverMenuItem(overMenuItem);
 
-        controller.setMelding(melding);
+        controller.setLabel(melding);
+        controller.setBorderPane(borderPane);
 
         controller.initialize();
     }

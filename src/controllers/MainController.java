@@ -2,7 +2,12 @@ package controllers;
 
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
+import utils.StateManager;
 import views.AboutView;
+import views.LidView;
 
 /**
  * Logica van het hoofdscherm
@@ -25,28 +30,40 @@ public class MainController {
     private MenuItem overMenuItem;
     private Label melding;
 
+    private BorderPane borderPane;
     private AboutView aboutView;
+    private LidView lidView;
 
     /**
      * Wanneer deze methode wordt aangeroepen, is het veilig om bijv. de menu-items aan te passen.
      */
     public void initialize() {
-        AboutController aboutController = new AboutController();
-        AboutView aboutView = new AboutView(aboutController);
+        StateManager.initialize(this);
 
-        afsluitenMenuItem.setOnAction(t -> {
+        AboutController aboutController = new AboutController();
+        aboutView = new AboutView(aboutController);
+
+       //LidController lidController = new LidController();
+        //lidView = new LidView(lidController);
+
+
+        maakLidMenuItem.setOnAction(event ->{
+            StateManager.switchView(StateManager.LID_VIEW);
+            System.out.println("Aangeroepen.");
+           // lidView.show();
+        });
+
+        afsluitenMenuItem.setOnAction(event -> {
             System.out.println("Afsluiten aangeroepen.");
 
-            melding.setText("Afsluiten aangeroepen.");
-
+            laatLabelZien("Afsluiten aangeroepen.");
             System.exit(0);
         });
 
-        overMenuItem.setOnAction(t -> {
+        overMenuItem.setOnAction(event -> {
             System.out.println("Over aangeroepen.");
 
-            melding.setText("Over aangeroepen.");
-
+            laatLabelZien("Over aangeroepen.");
             aboutView.show();
 
         });
@@ -101,7 +118,20 @@ public class MainController {
         this.overMenuItem = overMenuItem;
     }
 
-    public void setMelding(Label melding) {
+    public void setLabel(Label melding) {
         this.melding = melding;
+
     }
+
+    public void laatLabelZien(String bericht){
+        melding.setText(bericht);
+    }
+    public void setBorderPane(BorderPane borderPane){
+        this.borderPane = borderPane;
+    }
+
+    public BorderPane getBorderPane(){
+        return borderPane;
+    }
+
 }
