@@ -2,19 +2,15 @@ package views;
 
 import controllers.LidController;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import models.Lid;
 
+
 public class LidView {
 
-    private static final String TITEL = "Lid";
-    private Stage stage;
     private Pane root;
     private LidController controller;
 
@@ -31,15 +27,6 @@ public class LidView {
     public LidView(LidController controller) {
         this.controller = controller;
 
-//        stage = new Stage();
-//        stage.setTitle(TITEL);
-//
-//        Parent root = createRoot();
-//        Scene scene = new Scene(root);
-//
-//        stage.setScene(scene);
-//        stage.setResizable(true);
-
         root = createRoot();
         setupController();
 
@@ -54,18 +41,24 @@ public class LidView {
         maakButton = new Button("Nieuw");
         verwijderButton = new Button("Verwijder");
         geboorteDatum = new DatePicker();
+        rating = new TextField();
 
 
         GridPane lidInvoer = new GridPane();
         lidInvoer.setGridLinesVisible(false);
         lidInvoer.addRow(0, maakHBox("Voornaam", voornaam));
+
         lidInvoer.addRow(1, maakHBox("Tussenvoegsel", tussenVoegsel));
         lidInvoer.addRow(2, maakHBox("Achternaam", achternaam));
         lidInvoer.addRow(3, maakHBox("Geboortedatum", geboorteDatum));
+        lidInvoer.addRow(4, maakHBox("Rating", rating));
+        lidInvoer.addRow(5, maakHBox(verwijderButton, maakButton));
 
         BorderPane borderPane = new BorderPane();
         borderPane.setLeft(lidInvoer);
         borderPane.setCenter(lidListView);
+        borderPane.setMaxSize(800, 1080);
+
 
         return borderPane;
 
@@ -74,7 +67,7 @@ public class LidView {
 
     private HBox maakHBox(String labelnaam, Node node) {
         HBox nieuweHBox = new HBox();
-        nieuweHBox.setSpacing(15);
+        nieuweHBox.setSpacing(20);
         nieuweHBox.setPadding(new Insets(15, 15, 15, 15));
         nieuweHBox.getChildren().addAll(new Label(labelnaam), node);
 
@@ -82,9 +75,26 @@ public class LidView {
 
     }
 
+    private HBox maakHBox(Button button1, Button button2) {
+        HBox nieuweHBox = new HBox();
+        nieuweHBox.setSpacing(20);
+        nieuweHBox.setPadding(new Insets(15, 15, 15, 15));
+        nieuweHBox.getChildren().addAll(button1, button2);
+
+        return nieuweHBox;
+
+    }
+
     private void setupController() {
         controller.setMaakButton(maakButton);
+        controller.setVerwijderButton(verwijderButton);
         controller.setLidListView(lidListView);
+        controller.setVoornaamTF(voornaam);
+        controller.setTussenVoegselTF(tussenVoegsel);
+        controller.setAchternaamTF(achternaam);
+        controller.setGeboorteDatumDP(geboorteDatum);
+        controller.setRatingTF(rating);
+
         controller.initialize();
     }
 
@@ -92,10 +102,7 @@ public class LidView {
     public Pane getRoot(){
         return root;
     }
-//    public void show() {
-//        stage.show();
-//    }
-//
+
 
 }
 

@@ -43,14 +43,11 @@ public class MainController {
         AboutController aboutController = new AboutController();
         aboutView = new AboutView(aboutController);
 
-       //LidController lidController = new LidController();
-        //lidView = new LidView(lidController);
-
 
         maakLidMenuItem.setOnAction(event ->{
             StateManager.switchView(StateManager.LID_VIEW);
             System.out.println("Aangeroepen.");
-           // lidView.show();
+
         });
 
         afsluitenMenuItem.setOnAction(event -> {

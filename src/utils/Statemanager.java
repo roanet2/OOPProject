@@ -36,7 +36,6 @@ public class StateManager {
                 LidView lidView = new LidView(lidController);
                 laatLabelZien("Aanmaken leden");
                 setCentrePane(lidView.getRoot());
-
         }
     }
 
@@ -55,7 +54,9 @@ public class StateManager {
        mainController.getBorderPane().setCenter(null);
     }
 
-
+    public static ArrayList<Lid> getLeden(){
+        return leden;
+    }
 
 
 }

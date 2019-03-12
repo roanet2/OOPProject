@@ -66,4 +66,8 @@ public class Lid implements Comparable<Lid> {
         return (naam.compareTo(anderLid.naam));
     }
 
+    @Override
+    public String toString() {
+        return naam + " " + geboorteDatum + " Rating: " + rating;
+    }
 }
