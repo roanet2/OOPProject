@@ -6,7 +6,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import models.Lid;
 import models.Partij;
-import utils.StateManager;
 
 public class PartijController {
 

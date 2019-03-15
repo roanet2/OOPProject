@@ -2,14 +2,8 @@ package controllers;
 
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
-import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
-import utils.StateManager;
 import views.AboutView;
-import views.LidView;
-
-import javax.swing.plaf.nimbus.State;
 
 /**
  * Logica van het hoofdscherm
