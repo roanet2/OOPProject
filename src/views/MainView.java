@@ -19,8 +19,8 @@ import javafx.stage.Stage;
 public class MainView {
 
     private static final String TITEL = "SchaakCompetitie";
-    private static final int WIDTH = 550;
-    private static final int HEIGHT = 320;
+    public static final int WIDTH = 780;
+    public static final int HEIGHT = 550;
 
     private MenuBar menuBar;
     private BorderPane borderPane;
@@ -181,12 +181,16 @@ public class MainView {
      * Toon dit scherm in het midden van de hoofdmonitor
      */
     public void show() {
+        show(stage, WIDTH, HEIGHT);
+    }
+
+    static void show(Stage stage, int width, int height) {
         Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
 
-        stage.setX((primaryScreenBounds.getWidth() - WIDTH) / 2f);
-        stage.setY((primaryScreenBounds.getHeight() - HEIGHT) / 2f);
-        stage.setWidth(WIDTH);
-        stage.setHeight(HEIGHT);
+        stage.setX((primaryScreenBounds.getWidth() - width) /2f );
+        stage.setY((primaryScreenBounds.getHeight() - height) / 2f);
+        stage.setWidth(width);
+        stage.setHeight(height);
 
         stage.show();
     }

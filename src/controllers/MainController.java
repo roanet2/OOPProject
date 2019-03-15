@@ -9,6 +9,8 @@ import utils.StateManager;
 import views.AboutView;
 import views.LidView;
 
+import javax.swing.plaf.nimbus.State;
+
 /**
  * Logica van het hoofdscherm
  *
@@ -32,7 +34,6 @@ public class MainController {
 
     private BorderPane borderPane;
     private AboutView aboutView;
-    private LidView lidView;
 
     /**
      * Wanneer deze methode wordt aangeroepen, is het veilig om bijv. de menu-items aan te passen.
@@ -43,6 +44,9 @@ public class MainController {
         AboutController aboutController = new AboutController();
         aboutView = new AboutView(aboutController);
 
+        maakPartijMenuItem.setOnAction(event ->{
+            StateManager.switchView(StateManager.PARTIJ_VIEW);
+        });
 
         maakLidMenuItem.setOnAction(event ->{
             StateManager.switchView(StateManager.LID_VIEW);

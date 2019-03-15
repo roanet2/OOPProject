@@ -1,13 +1,10 @@
 package views;
 
 import controllers.LidController;
-import javafx.geometry.Insets;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
-import javafx.stage.Stage;
 import models.Lid;
-
+import utils.CustomHBox;
 
 public class LidView {
 
@@ -23,7 +20,6 @@ public class LidView {
     private Button maakButton;
     private Button verwijderButton;
 
-
     public LidView(LidController controller) {
         this.controller = controller;
 
@@ -32,13 +28,14 @@ public class LidView {
 
     }
 
+
     private Pane createRoot() {
         voornaam = new TextField();
         tussenVoegsel = new TextField();
         achternaam = new TextField();
         lidListView = new ListView<>();
 
-        maakButton = new Button("Nieuw");
+        maakButton = new Button("Bewaar");
         verwijderButton = new Button("Verwijder");
         geboorteDatum = new DatePicker();
         rating = new TextField();
@@ -46,13 +43,13 @@ public class LidView {
 
         GridPane lidInvoer = new GridPane();
         lidInvoer.setGridLinesVisible(false);
-        lidInvoer.addRow(0, maakHBox("Voornaam", voornaam));
-
-        lidInvoer.addRow(1, maakHBox("Tussenvoegsel", tussenVoegsel));
-        lidInvoer.addRow(2, maakHBox("Achternaam", achternaam));
-        lidInvoer.addRow(3, maakHBox("Geboortedatum", geboorteDatum));
-        lidInvoer.addRow(4, maakHBox("Rating", rating));
-        lidInvoer.addRow(5, maakHBox(verwijderButton, maakButton));
+        lidInvoer.addRow(0, CustomHBox.maakHBox("Voornaam", voornaam));
+        lidInvoer.addRow(1, CustomHBox.maakHBox("TussenVoegsel", tussenVoegsel));
+        lidInvoer.addRow(2, CustomHBox.maakHBox("Achternaam", achternaam));
+        lidInvoer.addRow(3, CustomHBox.maakHBox("Geboortedatum", geboorteDatum));
+        lidInvoer.addRow(4, CustomHBox.maakHBox("Rating", rating));
+        lidInvoer.addRow(5, CustomHBox.maakHBox(verwijderButton, maakButton));
+        lidInvoer.addRow(8, new Label("* = Invoer verplicht"));
 
         BorderPane borderPane = new BorderPane();
         borderPane.setLeft(lidInvoer);
@@ -62,26 +59,6 @@ public class LidView {
 
         return borderPane;
 
-
-    }
-
-    private HBox maakHBox(String labelnaam, Node node) {
-        HBox nieuweHBox = new HBox();
-        nieuweHBox.setSpacing(20);
-        nieuweHBox.setPadding(new Insets(15, 15, 15, 15));
-        nieuweHBox.getChildren().addAll(new Label(labelnaam), node);
-
-        return nieuweHBox;
-
-    }
-
-    private HBox maakHBox(Button button1, Button button2) {
-        HBox nieuweHBox = new HBox();
-        nieuweHBox.setSpacing(20);
-        nieuweHBox.setPadding(new Insets(15, 15, 15, 15));
-        nieuweHBox.getChildren().addAll(button1, button2);
-
-        return nieuweHBox;
 
     }
 
@@ -99,7 +76,7 @@ public class LidView {
     }
 
 
-    public Pane getRoot(){
+    public Pane getRoot() {
         return root;
     }
 

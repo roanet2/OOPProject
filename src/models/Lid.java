@@ -68,6 +68,7 @@ public class Lid implements Comparable<Lid> {
 
     @Override
     public String toString() {
-        return naam + " " + geboorteDatum + " Rating: " + rating;
+        return naam + ", " + geboorteDatum.getDayOfMonth() + "-" + geboorteDatum.getMonthValue() + "-" +
+                geboorteDatum.getYear()+ ", Rating: " + rating;
     }
 }

@@ -72,13 +72,6 @@ public class AboutView {
      * Toon dit scherm in het midden van de hoofdmonitor
      */
     public void show() {
-        Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
-
-        stage.setX((primaryScreenBounds.getWidth() - WIDTH) / 2f);
-        stage.setY((primaryScreenBounds.getHeight() - HEIGHT) / 2f);
-        stage.setWidth(WIDTH);
-        stage.setHeight(HEIGHT);
-
-        stage.show();
+        MainView.show(stage, WIDTH, HEIGHT);
     }
 }
