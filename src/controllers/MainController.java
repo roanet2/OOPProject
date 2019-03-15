@@ -3,6 +3,7 @@ package controllers;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
+import utils.StateManager;
 import views.AboutView;
 
 /**
