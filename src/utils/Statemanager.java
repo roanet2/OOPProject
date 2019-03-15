@@ -14,6 +14,8 @@ import java.util.ArrayList;
 
 public class StateManager {
 
+    private static LidController lidController;
+    private static LidView lidView;
     public static final int GEEN_VIEW = 0;
     public static final int LID_VIEW = 1;
     public static final int PARTIJ_VIEW = 2;
@@ -28,6 +30,9 @@ public class StateManager {
         leden = new ArrayList<>();
         partijen = new ArrayList<>();
 
+        lidController = new LidController();
+       lidView = new LidView(lidController);
+
     }
 
     public static void switchView(int view) {
@@ -38,8 +43,6 @@ public class StateManager {
                 break;
 
             case LID_VIEW:
-                LidController lidController = new LidController();
-                LidView lidView = new LidView(lidController);
                 laatLabelZien("Aanmaken leden");
                 setCentrePane(lidView.getRoot());
                 break;

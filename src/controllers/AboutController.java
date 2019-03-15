@@ -20,6 +20,8 @@ public class AboutController {
 
     }
 
+
+
     public void setMelding(TextArea melding) {
         this.melding = melding;
     }
