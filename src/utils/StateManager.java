@@ -1,5 +1,6 @@
 package utils;
 
+import controllers.CompetitieController;
 import controllers.LidController;
 import controllers.MainController;
 import controllers.PartijController;
@@ -7,6 +8,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.layout.Pane;
 import models.Lid;
 import models.Partij;
+import views.CompetitieView;
 import views.LidView;
 import views.PartijView;
 
@@ -19,6 +21,7 @@ public class StateManager {
     public static final int GEEN_VIEW = 0;
     public static final int LID_VIEW = 1;
     public static final int PARTIJ_VIEW = 2;
+    public  static final  int  COMPETITIE_VIEW = 3;
 
     private static MainController mainController;
     private static ArrayList<Lid> leden;
@@ -52,6 +55,13 @@ public class StateManager {
                 PartijView partijView = new PartijView(partijController);
                 laatLabelZien("Aanmaken partijen");
                 setCentrePane(partijView.getRoot());
+                break;
+
+            case COMPETITIE_VIEW:
+                CompetitieController competitieController = new CompetitieController();
+                CompetitieView competitieView = new CompetitieView(competitieController);
+                laatLabelZien("Aanmaken partijen");
+                setCentrePane(competitieView.getRoot());
         }
     }
 

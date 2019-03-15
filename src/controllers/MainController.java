@@ -43,6 +43,10 @@ public class MainController {
             StateManager.switchView(StateManager.PARTIJ_VIEW);
         });
 
+        maakCompetitieMenuItem.setOnAction(event ->{
+            StateManager.switchView(StateManager.COMPETITIE_VIEW);
+        });
+
         maakLidMenuItem.setOnAction(event ->{
             StateManager.switchView(StateManager.LID_VIEW);
             System.out.println("Aangeroepen.");
