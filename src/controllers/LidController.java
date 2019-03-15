@@ -17,7 +17,7 @@ import java.util.TimerTask;
 
 
 public class LidController {
-    private static int keyPress = 10;
+    private static int keyPress = 11;
     private TextField voornaam;
     private TextField tussenVoegsel;
     private TextField achternaam;
@@ -28,6 +28,7 @@ public class LidController {
     private Button verwijderButton;
     private Lid huidigLid;
     private ObservableList<Lid> leden;
+    private Button afsluitenTempButton;
 
     public void initialize() {
 
@@ -71,6 +72,13 @@ public class LidController {
         verwijderButton.setOnAction(event -> {
 
             leden.remove(huidigLid);
+
+        });
+
+        afsluitenTempButton.setOnAction(event -> {
+            System.out.println("Inhoud: " + leden.toArray().length);
+            StateManager.switchView(StateManager.GEEN_VIEW);
+            System.out.println("Inhoud: na  " + leden.toArray().length);
 
         });
 
@@ -156,6 +164,8 @@ public class LidController {
 
 
         }
+
+
 
 
     }
@@ -249,6 +259,12 @@ public class LidController {
 
     public void setGeboorteDatumDP(DatePicker geboorteDatum) {
         this.geboorteDatum = geboorteDatum;
+
+    }
+
+    public void setAfsluitButton(Button afsluitButton){{
+        this.afsluitenTempButton = afsluitButton;
+    }
 
     }
 

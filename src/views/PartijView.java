@@ -56,6 +56,12 @@ public class PartijView {
     }
 
     private void setupController() {
+        controller.setPartijListView(partijListView);
+        controller.setLedenListView(ledenListView);
+        controller.setVerwijderPartijButton(verwijderPartijButton);
+        controller.setVoegSpelerToeButton(voegSpelerToeButton);
+
+        controller.initialize();
     }
 
     public Pane getRoot() {

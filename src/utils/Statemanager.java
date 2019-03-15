@@ -6,6 +6,7 @@ import controllers.PartijController;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.Pane;
 import models.Lid;
+import models.Partij;
 import views.LidView;
 import views.PartijView;
 
@@ -19,11 +20,13 @@ public class StateManager {
 
     private static MainController mainController;
     private static ArrayList<Lid> leden;
+    private static ArrayList<Partij> partijen;
 
 
     public static void initialize(MainController mainController) {
         StateManager.mainController = mainController;
         leden = new ArrayList<>();
+        partijen = new ArrayList<>();
 
     }
 
@@ -76,7 +79,12 @@ public class StateManager {
     }
 
     public static ArrayList<Lid> getLeden() {
+        System.out.println("leden: " + leden.toArray().length);
         return leden;
+    }
+
+    public static ArrayList<Partij> getPartijen(){
+        return partijen;
     }
 
 
