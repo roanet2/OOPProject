@@ -86,4 +86,8 @@ public class Ronde {
         return partijen;
     }
 
+    @Override
+    public String toString() {
+        return "datum:" + speelDatum ;
+    }
 }

@@ -136,4 +136,12 @@ public class Competitie {
 
     }
 
+    @Override
+    public String toString() {
+        return "Competitie: "+ naam +  " beginDatum: " + beginDatum + " eindDatum: " + eindDatum ;
+    }
+
+    public int getRondensize() {
+        return ronden.size();
+    }
 }

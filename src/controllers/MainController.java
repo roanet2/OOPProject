@@ -53,6 +53,18 @@ public class MainController {
 
         });
 
+
+        maakCompetitieMenuItem.setOnAction(event ->{
+            StateManager.switchView(StateManager.COMPETITIE_VIEW);
+            System.out.println("Aangeroepen.");
+
+        });
+
+        maakRondeMenuItem.setOnAction(event ->{
+            StateManager.switchView(StateManager.RONDE_VIEW);
+            System.out.println("Aangeroepen.");
+
+        });
         afsluitenMenuItem.setOnAction(event -> {
             System.out.println("Afsluiten aangeroepen.");
 

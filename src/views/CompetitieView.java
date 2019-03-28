@@ -10,6 +10,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import models.Competitie;
+import utils.CustomHBox;
 
 public class CompetitieView {
 
@@ -19,12 +20,12 @@ public class CompetitieView {
     private CompetitieController controller;
 
     private DatePicker beginDatum;
-    private DatePicker EindDatum;
-    private TextField Competitienaam;
+    private DatePicker eindDatum;
+    private TextField competitieNaam;
     private ListView<Competitie> competitieListView;
     private Button maakButton;
     private Button verwijderButton;
-
+    private Button afsluitenTempButton;
 
     public CompetitieView(CompetitieController controller) {
         this.controller = controller;
@@ -48,19 +49,26 @@ public class CompetitieView {
 
         maakButton = new Button("Nieuw");
         verwijderButton = new Button("Verwijder");
-        Competitienaam = new TextField();
+        competitieNaam = new TextField();
         beginDatum = new DatePicker();
-        EindDatum = new DatePicker();
+        eindDatum = new DatePicker();
+        afsluitenTempButton = new  Button("Afsluiten");
 
-        GridPane rondeInvoer = new GridPane();
-        rondeInvoer.setGridLinesVisible(false);
-        rondeInvoer.addRow(0, maakHBox("Competitienaam", Competitienaam));
-        rondeInvoer.addRow(1, maakHBox("Begindatum:", beginDatum));
-        rondeInvoer.addRow(2, maakHBox("Einddatum:", EindDatum));
+        GridPane CompetitieInvoer = new GridPane();
+        CompetitieInvoer.setGridLinesVisible(false);
+        CompetitieInvoer.addRow(0, CustomHBox.maakHBox("Competitienaam", competitieNaam));
+        CompetitieInvoer.addRow(1, CustomHBox.maakHBox("Begindatum:", beginDatum));
+        CompetitieInvoer.addRow(2, CustomHBox.maakHBox("Einddatum:", eindDatum));
+        CompetitieInvoer.addRow(3,CustomHBox.maakHBox(verwijderButton, maakButton));
+        CompetitieInvoer.addRow(4,CustomHBox.maakHBox("exit",afsluitenTempButton));
+        CompetitieInvoer.addRow(8, new Label("* = Invoer verplicht"));
+
 
         BorderPane borderPane = new BorderPane();
-        borderPane.setLeft(rondeInvoer);
+        borderPane.setLeft(CompetitieInvoer);
         borderPane.setCenter(competitieListView);
+
+        borderPane.setMaxSize(800, 1080);
 
         return borderPane;
 
@@ -68,18 +76,23 @@ public class CompetitieView {
     }
 
     private HBox maakHBox(String labelnaam, Node node) {
-        HBox nieuweHBox2 = new HBox();
-        nieuweHBox2.setSpacing(10);
-        nieuweHBox2.setPadding(new Insets(15, 15, 15, 15));
-        nieuweHBox2.getChildren().addAll(new Label(labelnaam), node);
+        HBox nieuweHBox = new HBox();
+        nieuweHBox.setSpacing(10);
+        nieuweHBox.setPadding(new Insets(15, 15, 15, 15));
+        nieuweHBox.getChildren().addAll(new Label(labelnaam), node);
 
-        return nieuweHBox2;
+        return nieuweHBox;
 
     }
 
     private void setupController() {
         controller.setMaakButton(maakButton);
+        controller.setCompetitieNaam(competitieNaam);
         controller.setcompetitieListView(competitieListView);
+        controller.setVerwijderButton(verwijderButton);
+        controller.setBeginDatum(beginDatum);
+        controller.setEindDatum(eindDatum);
+        controller.setAfsluitenTempButton(afsluitenTempButton);
         controller.initialize();
     }
 
