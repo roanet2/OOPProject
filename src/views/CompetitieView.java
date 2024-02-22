@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 import models.Competitie;
 import utils.CustomHBox;
 
-public class CompetitieView {
+public class    CompetitieView {
 
     private static final String TITEL = "Competitie";
     private Stage stage;

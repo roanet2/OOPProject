@@ -19,7 +19,6 @@ public class LidView {
     private ListView<Lid> lidListView;
     private Button maakButton;
     private Button verwijderButton;
-    private Button afsluitenTempButton;
 
     public LidView(LidController controller) {
         this.controller = controller;
@@ -40,28 +39,20 @@ public class LidView {
         verwijderButton = new Button("Verwijder");
         geboorteDatum = new DatePicker();
         rating = new TextField();
-        afsluitenTempButton = new Button("Afsluiten");
-
 
         GridPane lidInvoer = new GridPane();
         lidInvoer.setGridLinesVisible(false);
-        lidInvoer.addRow(0, CustomHBox.maakHBox("Voornaam", voornaam));
+        lidInvoer.addRow(0, CustomHBox.maakHBox("Voornaam*", voornaam));
         lidInvoer.addRow(1, CustomHBox.maakHBox("TussenVoegsel", tussenVoegsel));
-        lidInvoer.addRow(2, CustomHBox.maakHBox("Achternaam", achternaam));
-        lidInvoer.addRow(3, CustomHBox.maakHBox("Geboortedatum", geboorteDatum));
+        lidInvoer.addRow(2, CustomHBox.maakHBox("Achternaam*", achternaam));
+        lidInvoer.addRow(3, CustomHBox.maakHBox("Geboortedatum*", geboorteDatum));
         lidInvoer.addRow(4, CustomHBox.maakHBox("Rating", rating));
         lidInvoer.addRow(5, CustomHBox.maakHBox(verwijderButton, maakButton));
         lidInvoer.addRow(8, new Label("* = Invoer verplicht"));
 
-
         BorderPane borderPane = new BorderPane();
         borderPane.setLeft(lidInvoer);
         borderPane.setCenter(lidListView);
-
-        //Tijdelijke afsluit-button
-        borderPane.setRight(afsluitenTempButton);
-        //
-
         borderPane.setMaxSize(800, 1080);
 
 
@@ -79,7 +70,6 @@ public class LidView {
         controller.setAchternaamTF(achternaam);
         controller.setGeboorteDatumDP(geboorteDatum);
         controller.setRatingTF(rating);
-        controller.setAfsluitButton(afsluitenTempButton);
 
         controller.initialize();
     }

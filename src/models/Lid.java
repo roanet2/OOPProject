@@ -1,12 +1,13 @@
 package models;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Period;
 
 /**
  * Deze class representeert een lid met een naam, geboortedatum en eventuele rating.
  */
-public class Lid implements Comparable<Lid> {
+public class Lid implements Serializable, Comparable<Lid> {
 
     private static final int RATING_DEFAULT = 1200;
     private String naam;
@@ -69,6 +70,6 @@ public class Lid implements Comparable<Lid> {
     @Override
     public String toString() {
         return naam + ", " + geboorteDatum.getDayOfMonth() + "-" + geboorteDatum.getMonthValue() + "-" +
-                geboorteDatum.getYear()+ ", Rating: " + rating;
+                geboorteDatum.getYear() + ", Rating: " + rating;
     }
 }

@@ -1,12 +1,13 @@
 package models;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
  * Deze class representeert een Ronde met een speeldatum en een verzameling partijen.
  */
-public class Ronde {
+public class Ronde implements Serializable {
 
     private LocalDate speelDatum;
     private ArrayList<Partij> partijen;

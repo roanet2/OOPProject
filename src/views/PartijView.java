@@ -37,18 +37,18 @@ public class PartijView {
         verwijderPartijButton = new Button("Verwijder");
         voegSpelerToeButton = new Button("Voeg toe");
 
-        FlowPane flowPane = new FlowPane();
-        flowPane.setHgap(20);
-        flowPane.getChildren().add(CustomHBox.maakHBox(partijListView, ledenListView));
-        flowPane.setAlignment(Pos.CENTER_LEFT);
-
         VBox vBox = new VBox();
         vBox.getChildren().add(CustomHBox.maakHBox(verwijderPartijButton, voegSpelerToeButton));
         vBox.setPadding(new Insets(350, 0, 0, 0));
 
+        FlowPane flowPane = new FlowPane();
+        flowPane.setHgap(20);
+        flowPane.getChildren().addAll(CustomHBox.maakHBox(partijListView, ledenListView), vBox);
+        flowPane.setAlignment(Pos.CENTER);
+
+
         BorderPane borderPane = new BorderPane();
         borderPane.setCenter(flowPane);
-        borderPane.setRight(vBox);
         borderPane.getCenter().setVisible(true);
 
 
@@ -67,7 +67,4 @@ public class PartijView {
     public Pane getRoot() {
         return root;
     }
-
-
 }
-

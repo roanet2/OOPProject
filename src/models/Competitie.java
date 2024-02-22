@@ -1,5 +1,6 @@
 package models;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -7,7 +8,7 @@ import java.util.ArrayList;
  * Deze class representeert een Competitie, waaraan leden mee kunnen doen die in verschillende ronden voor kunnen komen
  * per dag kunnen maximaal 5 ronden worden gespeeld.
  */
-public class Competitie {
+public class Competitie implements Serializable {
 
     public static final int MAX_AANTAL_RONDEN_PER_DAG = 5;
     private String naam;

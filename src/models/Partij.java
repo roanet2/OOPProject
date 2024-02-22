@@ -1,12 +1,14 @@
 package models;
 
+import java.io.Serializable;
+
 /**
  * Deze class representeert een Partij met spelers en een mogelijke winnaar/remise. Bij het aanmaken van de partij wordt
  * voor iedere speler ook een verwachtingwaarde berekent -aan hand van het ratingsverschil- volgens de Elo-methode.
  * Deze zorgt ervoor dat een speler bij een betere opponent een grotere toename ziet in zijn/haar rating bij winst
  * en vice versa.
  */
-public class Partij {
+public class Partij implements Serializable {
 
 
     private Lid spelerZwart;
@@ -21,6 +23,10 @@ public class Partij {
         this.spelerWit = spelerWit;
 
         berekenKansOpWinst(spelerZwart, spelerWit);
+    }
+
+    public boolean isGespeeld(){
+        return winnaar != null || remise;
     }
 
     /**
@@ -99,5 +105,22 @@ public class Partij {
         return punten;
     }
 
+    @Override
+    public String toString() {
+        String informatie;
+        if(winnaar != null){
+            informatie = "*-*Opponenten (zwart-wit): " + spelerZwart.getNaam() + " - " +  spelerWit.getNaam() +
+                    ", WINAAR = " + winnaar.getNaam();
 
+        }else if(remise){
+            informatie = "*-*Opponenten (zwart-wit): " + spelerZwart.getNaam() + " - " +  spelerWit.getNaam() +
+                    ", REMISE" ;
+
+        }else{
+           informatie = "Opponenten (zwart-wit): " + spelerZwart.getNaam() + " - " +  spelerWit.getNaam();
+        }
+
+        return informatie;
+
+    }
 }

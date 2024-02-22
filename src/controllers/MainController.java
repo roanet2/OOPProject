@@ -36,20 +36,41 @@ public class MainController {
     public void initialize() {
         StateManager.initialize(this);
 
-        AboutController aboutController = new AboutController();
-        aboutView = new AboutView(aboutController);
+        laadMenuItem.setOnAction(event -> {
+            System.out.println("inladen leden: " + StateManager.getLedenRepository().load());
+            System.out.println("inladen partijen: " + StateManager.getPartijenRepository().load());
+            StateManager.getLedenRepository().load();
+            StateManager.getPartijenRepository().load();
+            System.out.println("\n");
+            System.out.println("inladen leden: " + StateManager.getLedenRepository().load());
+            System.out.println("inladen partijen: " + StateManager.getPartijenRepository().load());
 
-        maakPartijMenuItem.setOnAction(event ->{
+        });
+
+        bewaarMenuItem.setOnAction(event -> {
+            System.out.println("Bewaren leden: " + StateManager.getLedenRepository().save());
+            System.out.println("Bewaren Partijen: " + StateManager.getPartijenRepository().save());
+            StateManager.getLedenRepository().save();
+            StateManager.getPartijenRepository().save();
+
+            System.out.println("\n");
+            System.out.println("Bewaren leden: " + StateManager.getLedenRepository().save());
+            System.out.println("Bewaren Partijen: " + StateManager.getPartijenRepository().save());
+
+        });
+
+        maakPartijMenuItem.setOnAction(event -> {
             StateManager.switchView(StateManager.PARTIJ_VIEW);
         });
 
-        maakCompetitieMenuItem.setOnAction(event ->{
+        maakCompetitieMenuItem.setOnAction(event -> {
             StateManager.switchView(StateManager.COMPETITIE_VIEW);
         });
 
-        maakLidMenuItem.setOnAction(event ->{
+        maakLidMenuItem.setOnAction(event -> {
             StateManager.switchView(StateManager.LID_VIEW);
             System.out.println("Aangeroepen.");
+            // System.out.println("Lengte-indicatie: " + StateManager.getLeden().toArray().length);
 
         });
 
@@ -73,8 +94,9 @@ public class MainController {
         });
 
         overMenuItem.setOnAction(event -> {
+            AboutController aboutController = new AboutController();
+            aboutView = new AboutView(aboutController);
             System.out.println("Over aangeroepen.");
-
             laatLabelZien("Over aangeroepen.");
             aboutView.show();
 
@@ -106,15 +128,15 @@ public class MainController {
         this.maakRondeMenuItem = maakRondeMenuItem;
     }
 
-    public void setVoegPartijToeMenuItem(MenuItem voegPartijToeMenuItem){
+    public void setVoegPartijToeMenuItem(MenuItem voegPartijToeMenuItem) {
         this.voegPartijToeMenuItem = voegPartijToeMenuItem;
     }
 
-    public void setMaakPartijMenuItem(MenuItem maakPartijMenuItem){
+    public void setMaakPartijMenuItem(MenuItem maakPartijMenuItem) {
         this.maakPartijMenuItem = maakPartijMenuItem;
     }
 
-    public void setMaakLidMenuItem(MenuItem maakLidMenuItem){
+    public void setMaakLidMenuItem(MenuItem maakLidMenuItem) {
         this.maakLidMenuItem = maakLidMenuItem;
     }
 
@@ -135,15 +157,16 @@ public class MainController {
 
     }
 
-    public void laatLabelZien(String bericht){
+    public void laatLabelZien(String bericht) {
         melding.setText(bericht);
     }
-    public void setBorderPane(BorderPane borderPane){
-        this.borderPane = borderPane;
+
+    public BorderPane getBorderPane() {
+        return borderPane;
     }
 
-    public BorderPane getBorderPane(){
-        return borderPane;
+    public void setBorderPane(BorderPane borderPane) {
+        this.borderPane = borderPane;
     }
 
 }

@@ -10,6 +10,10 @@ import javafx.stage.Stage;
  */
 public class Main extends Application {
 
+    public static void main(String[] args) {
+        launch(args);
+    }
+
     @Override
     public void start(Stage primaryStage) {
         MainController mainController = new MainController();
@@ -17,13 +21,10 @@ public class Main extends Application {
         mainView.show();
     }
 
-    public static void main(String[] args) { launch(args); }
-
 }
 
 
-// TODO
-// maken van de toString()'s indien relevant voor de java FX applicatie. //
+
 
 
 

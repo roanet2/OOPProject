@@ -1,5 +1,8 @@
 package utils;
 
+import Repo.LedenObjectRepository;
+import Repo.PartijObjectRepository;
+import Repo.Repository;
 import controllers.*;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.Pane;
@@ -15,28 +18,35 @@ import java.util.ArrayList;
 
 public class StateManager {
 
-    private static LidController lidController;
-    private static LidView lidView;
     public static final int GEEN_VIEW = 0;
     public static final int LID_VIEW = 1;
     public static final int PARTIJ_VIEW = 2;
     public  static final  int  COMPETITIE_VIEW = 3;
     public  static final  int  RONDE_VIEW = 4;
 
+
+    private static LidController lidController;
+    private static LidView lidView;
+    private static PartijController partijController;
+    private static PartijView partijView;
+    private static CompetitieController competitieController;
+    private static CompetitieView competitieView;
     private static MainController mainController;
-    private static ArrayList<Lid> leden;
-    private static ArrayList<Partij> partijen;
+    private static Repository<Lid> leden;
+    private static Repository<Partij> partijen;
     private static ArrayList<Competitie> competities;
 
 
     public static void initialize(MainController mainController) {
         StateManager.mainController = mainController;
-        leden = new ArrayList<>();
-        partijen = new ArrayList<>();
+        partijen = new PartijObjectRepository();
+        leden = new LedenObjectRepository();
+        // leden = new ArrayList<>();
         competities = new ArrayList<>();
 
-        lidController = new LidController();
-        lidView = new LidView(lidController);
+
+//        competitieController = new CompetitieController();
+//        competitieView = new CompetitieView(competitieController);
 
     }
 
@@ -48,18 +58,23 @@ public class StateManager {
                 break;
 
             case LID_VIEW:
+                lidController = new LidController();
+                lidView = new LidView(lidController);
                 laatLabelZien("Aanmaken leden");
+                lidView = new LidView(lidController);
                 setCentrePane(lidView.getRoot());
                 break;
 
             case PARTIJ_VIEW:
-                PartijController partijController = new PartijController();
-                PartijView partijView = new PartijView(partijController);
+                partijController = new PartijController();
+                partijView = new PartijView(partijController);
                 laatLabelZien("Aanmaken partijen");
+                partijView = new PartijView(partijController);
                 setCentrePane(partijView.getRoot());
                 break;
 
             case COMPETITIE_VIEW:
+                laatLabelZien("Aanmaken partijen");
                 CompetitieController competitieController = new CompetitieController();
                 CompetitieView competitieView = new CompetitieView(competitieController);
                 laatLabelZien("Aanmaken Competitie");
@@ -89,7 +104,7 @@ public class StateManager {
 
     }
 
-    public static void setCentrePane(Pane pane) {
+    private static void setCentrePane(Pane pane) {
         mainController.getBorderPane().setCenter(pane);
 
 
@@ -99,12 +114,13 @@ public class StateManager {
         mainController.getBorderPane().setCenter(null);
     }
 
-    public static ArrayList<Lid> getLeden() {
-        System.out.println("leden: " + leden.toArray().length);
+    public static Repository<Lid> getLedenRepository() {
+        System.out.println("Leden l: " + leden.getAll().toArray().length);
         return leden;
     }
 
-    public static ArrayList<Partij> getPartijen(){
+    public static Repository<Partij> getPartijenRepository() {
+        System.out.println("Partij l: " + partijen.getAll().toArray().length);
         return partijen;
     }
 
